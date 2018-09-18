@@ -52,3 +52,106 @@
  * https://www.geeksforgeeks.org/structure-member-alignment-padding-and-data-packing/
  * https://barrgroup.com/Embedded-Systems/How-To/C-Function-Pointers
  */
+
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+class Operacion{
+private:
+    double numero1;
+    double numero2;
+    int numero3;
+public:
+    Operacion(){
+
+    }
+
+    Operacion(double n1, double n2, int n3){
+        numero1=n1;
+        numero2=n2;
+        numero3=n3;
+    }
+    double getn1(){
+        return numero1;
+    }
+    double getn2(){
+        return numero2;
+    }
+    int getn3(){
+        return numero3;
+    }
+    void setn1(double n1){
+        numero1=n1;
+    }
+    void setn2(double n2){
+        numero2=n2;
+    }
+    void setn3(int n3){
+        numero3=n3;
+    }
+
+    int sumar(double suma){
+
+          suma=numero1+numero2;
+
+          cout<<suma<<endl;
+    }
+
+    int restar(double resta){
+
+          resta=numero1-numero2;
+
+          cout<<resta<<endl;
+    }
+    int multiplicar(double multi){
+
+          multi=numero1*numero2;
+
+          cout<<multi<<endl;
+    }
+
+};
+int main(){
+    double n1;
+    double n2;
+    int n3;
+    double res;
+    bool bandera=true;
+    Operacion obj =Operacion(n1,n2,n3);
+
+    cout<<"Ingrese el primer numero"<<endl;
+    cin>>n1;
+    cout<<"Ingrese el segundo numero"<<endl;
+    cin>>n2;
+
+    obj.setn1(n1);
+    obj.setn2(n2);
+
+    system("cls");
+    do{
+    cout<<"Ingrese una de las opciones:\n1.sumar\n2.restar\n3.multiplicar\n4.salir"<<endl;
+    cin>>n3;
+    obj.setn3(n3);
+    switch(obj.getn3()){
+    case 1:
+        obj.sumar(res);
+        break;
+    case 2:
+        obj.restar(res);
+        break;
+    case 3:
+        obj.multiplicar(res);
+        break;
+    case 4:
+        bandera=false;
+        break;
+    default:
+        cout<<"Usted ingreso una opcion incorrecta"<<endl;
+        break;
+    }
+    }while(bandera);
+
+    cin.get();
+    return 0;
+}
